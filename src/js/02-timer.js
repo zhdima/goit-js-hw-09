@@ -25,6 +25,7 @@ function convertMs(ms) {
 const addLeadingZero = value => value.toString().padStart(2, '0');
 
 let endDate = null;
+let intervalId = null;
 
 const refs = {
   btnStart:  document.querySelector('button[data-start]'),
@@ -43,13 +44,19 @@ function clockCountdown() {
   refs.hours.textContent   = addLeadingZero(hours);
   refs.minutes.textContent = addLeadingZero(minutes);
   refs.seconds.textContent = addLeadingZero(seconds);
+
+  if (leftMs === 0) {            // знімаємо інтервал та повертаємо доступніть для нового старту
+    clearInterval(intervalId);
+    refs.inputDate.toggleAttribute('disabled');  
+    refs.btnStart.toggleAttribute('disabled');  
+  }
 }
   
 function onStart() {
   if (!endDate) return;
 
   clockCountdown();  // immediately start
-  setInterval(clockCountdown, 1000);
+  intervalId = setInterval(clockCountdown, 1000);
 
   refs.inputDate.toggleAttribute('disabled');  
   refs.btnStart.toggleAttribute('disabled');  

@@ -2,17 +2,17 @@ import Notiflix from 'notiflix';
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
-  if (shouldResolve) {
-    // Fulfill
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve({ position, delay }), delay);
-    });
-  } else {
-    // Reject
-    return new Promise((resolve, reject) => {
-      setTimeout(() => reject({ position, delay }), delay);
-    });
-  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldResolve) {
+        // Fulfill
+        resolve({ position, delay });
+      } else {
+        // Reject
+        reject({ position, delay });
+      }
+    }, delay);
+  });
 }
 
 function onFormSubmit(evt) {

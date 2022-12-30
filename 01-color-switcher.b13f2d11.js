@@ -1,0 +1,2 @@
+const t=document.querySelector("button[data-start]"),e=document.querySelector("button[data-stop]");let o=null;function n(){document.body.style.backgroundColor=`#${Math.floor(16777215*Math.random()).toString(16)}`}function l(){t.toggleAttribute("disabled"),e.toggleAttribute("disabled")}function r(){n(),o=setInterval(n,1e3),l()}function a(){o&&(clearInterval(o),l())}t&&e?(t.addEventListener("click",r),e.addEventListener("click",a),e.toggleAttribute("disabled",!0)):console.log("Error: invalid markup!");
+//# sourceMappingURL=01-color-switcher.b13f2d11.js.map

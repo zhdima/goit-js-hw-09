@@ -1,0 +1,2 @@
+!function(){var t=document.querySelector("button[data-start]"),e=document.querySelector("button[data-stop]"),o=null;function n(){document.body.style.backgroundColor="#".concat(Math.floor(16777215*Math.random()).toString(16))}function r(){t.toggleAttribute("disabled"),e.toggleAttribute("disabled")}function a(){n(),o=setInterval(n,1e3),r()}function l(){o&&(clearInterval(o),r())}t&&e?(t.addEventListener("click",a),e.addEventListener("click",l),e.toggleAttribute("disabled",!0)):console.log("Error: invalid markup!")}();
+//# sourceMappingURL=01-color-switcher.498c7740.js.map
